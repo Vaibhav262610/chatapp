@@ -53,6 +53,9 @@ const Chat = (props) => {
     <>
       <div className="h-screen bg-black w-full flex justify-center items-center">
         <div className="bg-gray-200 w-6/12 px-12 py-8 flex flex-col rounded">
+            <div className="flex items-center mb-8 justify-center">
+                <h1 className="text-2xl font-bold  uppercase">Welcome to {room}</h1>
+            </div>
           <div className="h-96 text-area rounded-lg overflow-y-scroll">
             {messages.map((message) => {
               return (
