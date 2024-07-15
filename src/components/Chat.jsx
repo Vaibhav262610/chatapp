@@ -29,6 +29,7 @@ const Chat = (props) => {
         messages.push({ ...doc.data(), id: doc.id });
       });
       setMessags(messages);
+      console.log(auth);
     });
     return () => unsubscribe();
   }, []);
@@ -40,6 +41,7 @@ const Chat = (props) => {
     await addDoc(messageRef, {
       text: msg,
       createdAt: serverTimestamp(),
+      photo: auth.currentUser.photoURL,
       user: auth.currentUser.displayName,
       room,
     });
@@ -55,8 +57,8 @@ const Chat = (props) => {
             {messages.map((message) => {
               return (
                 <>
-                  <div key={message.id} className="flex gap-3">
-                    {/* <img src={message} alt="" /> */}
+                  <div key={message.id} className="flex gap-3 items-center">
+                    <img src={message.photo} alt="" className="rounded-full" height={40} width={40}/>
                     <h1 className="font-bold uppercase text-sm text-red-500">
                       {message.user}
                     </h1>
@@ -67,11 +69,7 @@ const Chat = (props) => {
             })}
           </div>
           <div className="flex mt-[-40px]  items-center justify-center">
-            <form
-              action=""
-              onSubmit={handleSubmit}
-              className="w-full flex"
-            >
+            <form action="" onSubmit={handleSubmit} className="w-full flex">
               <div className="w-full">
                 <input
                   type="text"
