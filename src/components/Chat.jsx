@@ -53,19 +53,27 @@ const Chat = (props) => {
     <>
       <div className="h-screen bg-black w-full flex justify-center items-center">
         <div className="bg-gray-200 w-11/12 md:w-6/12 px-2 md:px-12 py-8 flex flex-col rounded">
-            <div className="flex items-center mb-8 justify-center">
-                <h1 className="text-2xl font-bold  uppercase">Welcome to {room}</h1>
-            </div>
-          <div className="h-96 text-area w-full rounded-lg overflow-y-scroll">
+          <div className="flex items-center mb-8 justify-center">
+            <h1 className="text-2xl font-bold  uppercase">Welcome to {room}</h1>
+          </div>
+          <div className="h-96 text-area w-full rounded-lg flex flex-col  gap-4 overflow-x-hidden overflow-y-scroll">
             {messages.map((message) => {
               return (
                 <>
                   <div key={message.id} className="flex gap-3 items-center">
-                    <img src={message.photo} alt="" className="rounded-full" height={40} width={40}/>
-                    <h1 className="font-bold uppercase text-sm text-red-500">
-                      {message.user}
-                    </h1>
-                    <h1>{message.text}</h1>
+                    <img
+                      src={message.photo}
+                      alt=""
+                      className="rounded-full"
+                      height={40}
+                      width={40}
+                    />
+                    <div className=" bg-gray-300 py-2 px-4 rounded">
+                      <h1 className="w-fit font-bold uppercase text-sm text-red-500">
+                        {message.user}
+                      </h1>
+                      <h1 className="">{message.text}</h1>
+                    </div>
                   </div>
                 </>
               );
